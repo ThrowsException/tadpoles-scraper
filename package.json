@@ -19,9 +19,8 @@
   "author": "chuck mac",
   "license": "MIT",
   "dependencies": {
-    "@ronomon/utimes": "^2.2.0",
     "async-retry": "^1.2.1",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "axios-cookiejar-support": "^0.3.5",
     "crypto": "^1.0.1",
     "graceful-fs": "^4.1.11",
