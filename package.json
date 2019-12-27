@@ -2,8 +2,10 @@
   "name": "tadpoles-scraper",
   "version": "1.0.0",
   "description": "A web scraper for tadpoles pictures",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
+    "start": "electron .",
+    "build": "electron-packager app tadpoles --all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -31,5 +33,9 @@
     "png-chunks-encode": "^1.0.0",
     "png-chunks-extract": "^1.0.0",
     "query-string": "^6.1.0"
+  },
+  "devDependencies": {
+    "electron": "^7.1.7",
+    "electron-packager": "^14.1.1"
   }
 }
