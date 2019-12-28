@@ -14,6 +14,7 @@ const piexif = require("piexifjs");
 const extract = require("png-chunks-extract");
 const encode = require("png-chunks-encode");
 const text = require("png-chunk-text");
+const program = require('commander');
 
 /**
  * Initialize vars used to track event pagination
@@ -44,11 +45,11 @@ const client = axios.create({
  * @constructor
  * @returns {object} http response from the login call
  */
-async function authenticate() {
-  console.log("  -- Authenticating " + config.username);
+async function authenticate(username, password) {
+  console.log("  -- Authenticating " + username);
   parms = {
-    email: config.username,
-    password: config.password,
+    email: username,
+    password: password,
     server: "tadpoles"
   };
 
@@ -333,9 +334,9 @@ async function maybe_update_image_data(file, event) {
   }
 }
 
-async function main() {
+async function main(username, password) {
   console.log("Starting Tadpoles Scraper...");
-  auth = await authenticate();
+  auth = await authenticate(username, password);
   admit = await admit();
   info = await get_overview();
   finalitem = info.data.first_event_time;
@@ -365,7 +366,9 @@ async function main() {
   }
 }
 
-main().catch(err => {
+program.parse(process.argv);
+
+main(program.args[0], program.args[1]).catch(err => {
   console.error("unexpected error", err);
   process.exit(2);
 });

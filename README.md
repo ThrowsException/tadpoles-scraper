@@ -64,7 +64,14 @@ npm i
 Run the scraper
 
 ```sh
-node index.js
+node index.js <username> <password>
+```
+
+### Docker 
+
+```sh
+docker build . -t tadpoles:latest
+docker run -it -v $(pwd):/app tadpoles <username> <password>
 ```
 
 ## License
